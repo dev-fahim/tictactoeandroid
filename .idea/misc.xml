@@ -12,11 +12,12 @@
         <entry key="app/src/main/res/drawable/round_back_dark_blue_20.xml" value="0.127" />
         <entry key="app/src/main/res/drawable/round_back_purple_20.xml" value="0.2515" />
         <entry key="app/src/main/res/drawable/round_black_blue_100.xml" value="0.2515" />
-        <entry key="app/src/main/res/layout/activity_game.xml" value="0.15896739130434784" />
+        <entry key="app/src/main/res/layout/activity_game.xml" value="0.29936594202898553" />
         <entry key="app/src/main/res/layout/activity_game_activty.xml" value="0.15896739130434784" />
         <entry key="app/src/main/res/layout/activity_initial.xml" value="0.15896739130434784" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/activity_player_name.xml" value="0.25104166666666666" />
+        <entry key="app/src/main/res/layout/activity_win_dialog_v2.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/win_dialog_layout.xml" value="0.18432971014492755" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2515" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2515" />

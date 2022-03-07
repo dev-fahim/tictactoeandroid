@@ -5,11 +5,15 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class InitialActivity extends AppCompatActivity {
 
@@ -25,6 +29,7 @@ public class InitialActivity extends AppCompatActivity {
         AppCompatButton joinRoomBtn = findViewById(R.id.initialJoinRoomBtn);
         AppCompatButton createNewRoomBtn = findViewById(R.id.initialCreateNewRoomBtn);
 
+        final String playerUniqueID = String.valueOf(System.currentTimeMillis());
 
         joinRoomBtn.setOnClickListener(view -> {
             final String playerName = playerNameEt.getText().toString();
@@ -36,6 +41,7 @@ public class InitialActivity extends AppCompatActivity {
                 Intent intent = new Intent(InitialActivity.this, GameActivity.class);
                 intent.putExtra("playerName", playerName);
                 intent.putExtra("roomId", roomId);
+                intent.putExtra("playerUniqueID", playerUniqueID);
                 startActivity(intent);
                 finish();
             }
@@ -47,18 +53,12 @@ public class InitialActivity extends AppCompatActivity {
             if (playerName.isEmpty()) {
                 Toast.makeText(InitialActivity.this, "Player name is required!", Toast.LENGTH_SHORT).show();
             } else {
-                final String playerUniqueID = String.valueOf(System.currentTimeMillis());
                 String roomId = String.valueOf(System.currentTimeMillis());
-                DatabaseReference connectionRef = databaseReference.child("connections");
-
-                roomId = connectionRef.push().getKey();
-
-                assert roomId != null;
-                databaseReference.child("connections").child(roomId).child(playerUniqueID).child("player_name").getRef().setValue(playerName);
 
                 Intent intent = new Intent(InitialActivity.this, GameActivity.class);
                 intent.putExtra("playerName", playerName);
                 intent.putExtra("roomId", roomId);
+                intent.putExtra("playerUniqueID", playerUniqueID);
                 startActivity(intent);
                 finish();
             }

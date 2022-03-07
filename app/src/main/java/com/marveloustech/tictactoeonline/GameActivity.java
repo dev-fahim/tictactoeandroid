@@ -69,9 +69,7 @@ public class GameActivity extends AppCompatActivity {
         player2TV = findViewById(R.id.gamePlayer2TV);
 
         final String getPlayerName = getIntent().getStringExtra("playerName");
-        final String getRoomId = getIntent().getStringExtra("roomId");
-
-        System.out.println(getRoomId);
+        connectionID = getIntent().getStringExtra("roomId");
 
         combinationList.add(new int[]{0, 1, 2});
         combinationList.add(new int[]{3, 4, 5});
@@ -87,122 +85,100 @@ public class GameActivity extends AppCompatActivity {
         progressDialog.setMessage("Waiting for opponent");
         progressDialog.show();
 
-        playerUniqueID = String.valueOf(System.currentTimeMillis());
+        playerUniqueID = getIntent().getStringExtra("playerUniqueID");
 
         player1TV.setText(getPlayerName);
 
         // before databaseReference.child("connections")
-        databaseReference.child("connections").child(getRoomId).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("connections").child(connectionID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (!opponentFound) {
                     if (snapshot.hasChildren()) {
-                        for (DataSnapshot connections : snapshot.getChildren()) {
-                            String conID = connections.getKey();
+                        String conID = snapshot.getKey();
 
-                            long getPlayersCount = connections.getChildrenCount();
+                        long getPlayersCount = snapshot.getChildrenCount();
 
-                            if (status.equals("waiting")) {
-                                if (getPlayersCount == 2) {
+                        if (status.equals("waiting")) {
+                            if (getPlayersCount == 2) {
 
-                                    playerTurn = playerUniqueID;
-                                    applyPlayerTurn(playerTurn);
+                                playerTurn = playerUniqueID;
+                                applyPlayerTurn(playerTurn);
 
-                                    // 202
-                                    boolean playerFound = false;
+                                // 202
+                                boolean playerFound = false;
 
-                                    for (DataSnapshot players : connections.getChildren()) {
-                                        String getPlayerUniqueID = players.getKey();
+                                for (DataSnapshot players : snapshot.getChildren()) {
+                                    String getPlayerUniqueID = players.getKey();
 
-                                        // 305
-                                        assert getPlayerUniqueID != null;
-                                        if (getPlayerUniqueID.equals(playerUniqueID)) {
-                                            playerFound = true;
-                                        } else if (playerFound) {
-                                            String getOpponentPlayerName = players.child("player_name").getValue(String.class);
-                                            opponentUniqueID = players.getKey();
-
-                                            player2TV.setText(getOpponentPlayerName);
-
-                                            // 542
-                                            connectionID = conID;
-
-                                            opponentFound = true;
-
-                                            databaseReference.child("turns").child(connectionID).addValueEventListener(turnsEventListener);
-                                            databaseReference.child("won").child(connectionID).addValueEventListener(wonEventListener);
-
-                                            if (progressDialog.isShowing()) {
-                                                progressDialog.dismiss();
-                                            }
-
-                                            databaseReference.child("connections").removeEventListener(this);
-                                        }
-                                    }
-                                }
-                            } else {
-                                // 1005
-                                if (getPlayersCount == 1) {
-//                                    connections.child(playerUniqueID).child("player_name").getRef().setValue(getPlayerName);
-
-                                    for (DataSnapshot players : connections.getChildren()) {
-
-                                        String getOpponentName = players.child("player_name").getValue(String.class);
+                                    // 305
+                                    assert getPlayerUniqueID != null;
+                                    if (getPlayerUniqueID.equals(playerUniqueID)) {
+                                        playerFound = true;
+                                    } else if (playerFound) {
+                                        String getOpponentPlayerName = players.child("player_name").getValue(String.class);
                                         opponentUniqueID = players.getKey();
 
-                                        playerTurn = opponentUniqueID;
-                                        assert playerTurn != null;
-                                        applyPlayerTurn(playerTurn);
+                                        player2TV.setText(getOpponentPlayerName);
 
-                                        player2TV.setText(getOpponentName);
-
+                                        // 542
                                         connectionID = conID;
+
                                         opponentFound = true;
 
                                         databaseReference.child("turns").child(connectionID).addValueEventListener(turnsEventListener);
                                         databaseReference.child("won").child(connectionID).addValueEventListener(wonEventListener);
 
-//                                        if (progressDialog.isShowing()) {
-//                                            progressDialog.dismiss();
-//                                        }
+                                        if (progressDialog.isShowing()) {
+                                            progressDialog.dismiss();
+                                        }
 
                                         databaseReference.child("connections").removeEventListener(this);
-
-                                        break;
                                     }
+                                }
+                            }
+                        } else {
+                            // 1005
+                            if (getPlayersCount == 1) {
+                                snapshot.child(playerUniqueID).child("player_name").getRef().setValue(getPlayerName);
+
+                                for (DataSnapshot players : snapshot.getChildren()) {
+
+                                    String getOpponentName = players.child("player_name").getValue(String.class);
+                                    opponentUniqueID = players.getKey();
+
+                                    playerTurn = opponentUniqueID;
+                                    assert playerTurn != null;
+                                    applyPlayerTurn(playerTurn);
+
+                                    player2TV.setText(getOpponentName);
+
+                                    connectionID = conID;
+                                    opponentFound = true;
+
+                                    databaseReference.child("turns").child(connectionID).addValueEventListener(turnsEventListener);
+                                    databaseReference.child("won").child(connectionID).addValueEventListener(wonEventListener);
+
+                                    if (progressDialog.isShowing()) {
+                                        progressDialog.dismiss();
+                                    }
+
+                                    databaseReference.child("connections").removeEventListener(this);
+
+                                    break;
                                 }
                             }
                         }
 
                         if (!opponentFound && !status.equals("waiting")) {
-                            if (progressDialog.isShowing()) {
-                                progressDialog.dismiss();
-                            }
-                            Toast.makeText(GameActivity.this, "Room ID is invalid", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(GameActivity.this, PlayerNameActivity.class);
-                            startActivity(intent);
-                            finish();
+                            snapshot.child(playerUniqueID).child("player_name").getRef().setValue(getPlayerName);
 
-//                            String connectionUniqueID = String.valueOf(System.currentTimeMillis());
-//
-//                            snapshot.child(connectionUniqueID).child(playerUniqueID).child("player_name").getRef().setValue(getPlayerName);
-//
-//                            status = "waiting";
+                            status = "waiting";
                         }
                     } else {
-                        if (progressDialog.isShowing()) {
-                            progressDialog.dismiss();
-                        }
-                        Toast.makeText(GameActivity.this, "Room ID is invalid", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(GameActivity.this, PlayerNameActivity.class);
-                        startActivity(intent);
-                        finish();
+                        snapshot.child(playerUniqueID).child("player_name").getRef().setValue(getPlayerName);
 
-//                        String connectionUniqueID = String.valueOf(System.currentTimeMillis());
-//
-//                        snapshot.child(connectionUniqueID).child(playerUniqueID).child("player_name").getRef().setValue(getPlayerName);
-//
-//                        status = "waiting";
+                        status = "waiting";
                     }
                 }
             }
@@ -264,13 +240,13 @@ public class GameActivity extends AppCompatActivity {
                 if (snapshot.hasChild("player_id")) {
                     String getWinPlayerID = snapshot.child("player_id").getValue(String.class);
 
-                    final WinDialog winDialog;
+                    final WinDialogV2 winDialog;
 
                     assert getWinPlayerID != null;
                     if (getWinPlayerID.equals(playerUniqueID)) {
-                        winDialog = new WinDialog(GameActivity.this, "You WON the GAME!");
+                        winDialog = new WinDialogV2(GameActivity.this, "You WON the GAME!");
                     } else {
-                        winDialog = new WinDialog(GameActivity.this, "Opponent WON the GAME!");
+                        winDialog = new WinDialogV2(GameActivity.this, "Opponent WON the GAME!");
                     }
 
                     winDialog.setCancelable(false);
@@ -461,7 +437,7 @@ public class GameActivity extends AppCompatActivity {
         }
 
         if (doneBoxes.size() == 9) {
-            final WinDialog winDialog = new WinDialog(GameActivity.this, "It is a DRAW!");
+            final WinDialogV2 winDialog = new WinDialogV2(GameActivity.this, "It is a DRAW!");
             winDialog.setCancelable(false);
             winDialog.show();
         }
