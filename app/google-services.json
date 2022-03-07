@@ -1,0 +1,267 @@
+{
+  "project_info": {
+    "project_number": "337005584542",
+    "firebase_url": "https://marveloustechnologiesapplab.firebaseio.com",
+    "project_id": "marveloustechnologiesapplab",
+    "storage_bucket": "marveloustechnologiesapplab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:337005584542:android:d9894018a7b2299458db8f",
+        "android_client_info": {
+          "package_name": "com.hirefee.hirefee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "337005584542-mk4v4inhc5i5j6c2u8ktflpqjltnstmp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hirefee.hirefee",
+            "certificate_hash": "cf603103c20c058b5f166dd3769e41817c08f9a4"
+          }
+        },
+        {
+          "client_id": "337005584542-76cip75t53g31dbpapjgc1448o7h8vms.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfWfn7brVp8gON-fr4VifAt6PQMGVWqHE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "337005584542-76cip75t53g31dbpapjgc1448o7h8vms.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "337005584542-n072ks3g3anh2g3o30go3mm18c6aptij.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.melt95inc.melt95App"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:337005584542:android:c7103de6df44109a58db8f",
+        "android_client_info": {
+          "package_name": "com.hirefee.hirefee_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "337005584542-76cip75t53g31dbpapjgc1448o7h8vms.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfWfn7brVp8gON-fr4VifAt6PQMGVWqHE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "337005584542-76cip75t53g31dbpapjgc1448o7h8vms.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "337005584542-n072ks3g3anh2g3o30go3mm18c6aptij.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.melt95inc.melt95App"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:337005584542:android:e1a11b25657b8d5558db8f",
+        "android_client_info": {
+          "package_name": "com.hirefee.hirefee_supplier"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "337005584542-i1jnaos87ehpbqjp7r9a4nr27n9s0qb5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hirefee.hirefee_supplier",
+            "certificate_hash": "cf603103c20c058b5f166dd3769e41817c08f9a4"
+          }
+        },
+        {
+          "client_id": "337005584542-76cip75t53g31dbpapjgc1448o7h8vms.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfWfn7brVp8gON-fr4VifAt6PQMGVWqHE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "337005584542-76cip75t53g31dbpapjgc1448o7h8vms.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "337005584542-n072ks3g3anh2g3o30go3mm18c6aptij.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.melt95inc.melt95App"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:337005584542:android:efb11dd080d07c3158db8f",
+        "android_client_info": {
+          "package_name": "com.marveloustech.staffing_solution_oy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "337005584542-k29bern8otu4ruibdbbhmlodt5aufesv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.marveloustech.staffing_solution_oy",
+            "certificate_hash": "4314470dc4c322acce5baebe7ed588ca43648cc3"
+          }
+        },
+        {
+          "client_id": "337005584542-76cip75t53g31dbpapjgc1448o7h8vms.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfWfn7brVp8gON-fr4VifAt6PQMGVWqHE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "337005584542-76cip75t53g31dbpapjgc1448o7h8vms.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "337005584542-n072ks3g3anh2g3o30go3mm18c6aptij.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.melt95inc.melt95App"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:337005584542:android:44c12fd1fe8605c358db8f",
+        "android_client_info": {
+          "package_name": "com.marveloustech.tictactoeonline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "337005584542-6buqps2p0eeuc4f5mhuuhe86eh38o2o1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.marveloustech.tictactoeonline",
+            "certificate_hash": "ee50135faa46819385db5c9a430d510e187da0d9"
+          }
+        },
+        {
+          "client_id": "337005584542-76cip75t53g31dbpapjgc1448o7h8vms.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfWfn7brVp8gON-fr4VifAt6PQMGVWqHE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "337005584542-76cip75t53g31dbpapjgc1448o7h8vms.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "337005584542-n072ks3g3anh2g3o30go3mm18c6aptij.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.melt95inc.melt95App"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:337005584542:android:079a35b78211d03c58db8f",
+        "android_client_info": {
+          "package_name": "com.workfee.workfee_supplier_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "337005584542-nfl7cq9gs9dp46i14i51h16kt0nrvnmj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.workfee.workfee_supplier_app",
+            "certificate_hash": "4314470dc4c322acce5baebe7ed588ca43648cc3"
+          }
+        },
+        {
+          "client_id": "337005584542-76cip75t53g31dbpapjgc1448o7h8vms.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfWfn7brVp8gON-fr4VifAt6PQMGVWqHE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "337005584542-76cip75t53g31dbpapjgc1448o7h8vms.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "337005584542-n072ks3g3anh2g3o30go3mm18c6aptij.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.melt95inc.melt95App"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
