@@ -26,9 +26,17 @@ public class WinDialogV2 extends Dialog {
 
         final TextView messageTV = findViewById(R.id.messageTV);
         final AppCompatButton startNewBtn = findViewById(R.id.startNewBtn);
+        final AppCompatButton restartBtn = findViewById(R.id.restartBtn);
 
         messageTV.setText(message);
+
         startNewBtn.setOnClickListener(view -> {
+            dismiss();
+            getContext().startActivity(new Intent(getContext(), InitialActivity.class));
+            game.finish();
+        });
+
+        restartBtn.setOnClickListener(view -> {
             dismiss();
             game.restart();
         });

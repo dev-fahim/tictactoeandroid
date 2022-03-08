@@ -2,6 +2,7 @@ package com.marveloustech.tictactoeonline;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -82,7 +83,7 @@ public class GameActivity extends AppCompatActivity {
 
         ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
-        progressDialog.setMessage("Waiting for opponent.\n Room ID: " + connectionID);
+        progressDialog.setMessage("Waiting for opponent.\nRoom ID: " + connectionID);
         progressDialog.show();
 
         playerUniqueID = getIntent().getStringExtra("playerUniqueID");
@@ -245,15 +246,17 @@ public class GameActivity extends AppCompatActivity {
                     assert getWinPlayerID != null;
                     if (getWinPlayerID.equals(playerUniqueID)) {
                         winDialog = new WinDialogV2(GameActivity.this, "You WON the GAME!");
+                        playWin();
                     } else {
                         winDialog = new WinDialogV2(GameActivity.this, "Opponent WON the GAME!");
+                        playNotWin();
                     }
 
                     winDialog.setCancelable(false);
                     winDialog.show();
 
-                    databaseReference.child("turns").child(connectionID).removeEventListener(turnsEventListener);
-                    databaseReference.child("won").child(connectionID).removeEventListener(wonEventListener);
+//                    databaseReference.child("turns").child(connectionID).removeEventListener(turnsEventListener);
+//                    databaseReference.child("won").child(connectionID).removeEventListener(wonEventListener);
                 }
             }
 
@@ -269,6 +272,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!doneBoxes.contains(_position) && playerTurn.equals(playerUniqueID)) {
+                    playBtnClick();
                     ((ImageView) v).setImageResource(R.drawable.cross_icon);
 
                     databaseReference.child("turns").child(connectionID).child(String.valueOf(doneBoxes.size() + 1)).child("box_position").setValue(_position);
@@ -285,6 +289,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!doneBoxes.contains(_position) && playerTurn.equals(playerUniqueID)) {
+                    playBtnClick();
                     ((ImageView) v).setImageResource(R.drawable.cross_icon);
 
                     databaseReference.child("turns").child(connectionID).child(String.valueOf(doneBoxes.size() + 1)).child("box_position").setValue(_position);
@@ -301,6 +306,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!doneBoxes.contains(_position) && playerTurn.equals(playerUniqueID)) {
+                    playBtnClick();
                     ((ImageView) v).setImageResource(R.drawable.cross_icon);
 
                     databaseReference.child("turns").child(connectionID).child(String.valueOf(doneBoxes.size() + 1)).child("box_position").setValue(_position);
@@ -317,6 +323,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!doneBoxes.contains(_position) && playerTurn.equals(playerUniqueID)) {
+                    playBtnClick();
                     ((ImageView) v).setImageResource(R.drawable.cross_icon);
 
                     databaseReference.child("turns").child(connectionID).child(String.valueOf(doneBoxes.size() + 1)).child("box_position").setValue(_position);
@@ -333,6 +340,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!doneBoxes.contains(_position) && playerTurn.equals(playerUniqueID)) {
+                    playBtnClick();
                     ((ImageView) v).setImageResource(R.drawable.cross_icon);
 
                     databaseReference.child("turns").child(connectionID).child(String.valueOf(doneBoxes.size() + 1)).child("box_position").setValue(_position);
@@ -349,6 +357,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!doneBoxes.contains(_position) && playerTurn.equals(playerUniqueID)) {
+                    playBtnClick();
                     ((ImageView) v).setImageResource(R.drawable.cross_icon);
 
                     databaseReference.child("turns").child(connectionID).child(String.valueOf(doneBoxes.size() + 1)).child("box_position").setValue(_position);
@@ -365,6 +374,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!doneBoxes.contains(_position) && playerTurn.equals(playerUniqueID)) {
+                    playBtnClick();
                     ((ImageView) v).setImageResource(R.drawable.cross_icon);
 
                     databaseReference.child("turns").child(connectionID).child(String.valueOf(doneBoxes.size() + 1)).child("box_position").setValue(_position);
@@ -381,6 +391,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!doneBoxes.contains(_position) && playerTurn.equals(playerUniqueID)) {
+                    playBtnClick();
                     ((ImageView) v).setImageResource(R.drawable.cross_icon);
 
                     databaseReference.child("turns").child(connectionID).child(String.valueOf(doneBoxes.size() + 1)).child("box_position").setValue(_position);
@@ -397,6 +408,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!doneBoxes.contains(_position) && playerTurn.equals(playerUniqueID)) {
+                    playBtnClick();
                     ((ImageView) v).setImageResource(R.drawable.cross_icon);
 
                     databaseReference.child("turns").child(connectionID).child(String.valueOf(doneBoxes.size() + 1)).child("box_position").setValue(_position);
@@ -438,6 +450,7 @@ public class GameActivity extends AppCompatActivity {
 
         if (doneBoxes.size() == 9) {
             final WinDialogV2 winDialog = new WinDialogV2(GameActivity.this, "It is a DRAW!");
+            playNotWin();
             winDialog.setCancelable(false);
             winDialog.show();
         }
@@ -463,5 +476,42 @@ public class GameActivity extends AppCompatActivity {
     public void restart() {
         boxesSelectedBy = new String[]{"", "", "", "", "", "", "", "", ""};
         doneBoxes.clear();
+        image1.setImageResource(R.drawable.transparent_back);
+        image2.setImageResource(R.drawable.transparent_back);
+        image3.setImageResource(R.drawable.transparent_back);
+        image4.setImageResource(R.drawable.transparent_back);
+        image5.setImageResource(R.drawable.transparent_back);
+        image6.setImageResource(R.drawable.transparent_back);
+        image7.setImageResource(R.drawable.transparent_back);
+        image8.setImageResource(R.drawable.transparent_back);
+        image9.setImageResource(R.drawable.transparent_back);
+
+        databaseReference.child("turns").child(connectionID).getRef().removeValue();
+    }
+
+    private void stop() {
+        databaseReference.child("turns").child(connectionID).removeEventListener(turnsEventListener);
+        databaseReference.child("won").child(connectionID).removeEventListener(wonEventListener);
+    }
+
+    @Override
+    public void finish() {
+        stop();
+        super.finish();
+    }
+
+    private void playBtnClick() {
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.play_btn_click);
+        mp.start();
+    }
+
+    private void playWin() {
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.play_win);
+        mp.start();
+    }
+
+    private void playNotWin() {
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.play_not_win);
+        mp.start();
     }
 }

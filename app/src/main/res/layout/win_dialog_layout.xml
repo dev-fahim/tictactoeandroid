@@ -23,11 +23,23 @@
             android:id="@+id/messageTV"/>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/restartBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Restart match"
+            android:layout_margin="20dp"
+            android:textColor="@color/white"
+            android:background="@drawable/round_back_blue_100"/>
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/startNewBtn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Start new match"
-            android:layout_margin="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="5dp"
             android:textColor="@color/white"
             android:background="@drawable/round_back_blue_100"/>
     </LinearLayout>
