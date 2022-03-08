@@ -45,7 +45,7 @@ public class GameActivity extends AppCompatActivity {
 
     ValueEventListener turnsEventListener, wonEventListener;
 
-    private final String[] boxesSelectedBy = {"", "", "", "", "", "", "", "", ""};
+    private String[] boxesSelectedBy = {"", "", "", "", "", "", "", "", ""};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +82,7 @@ public class GameActivity extends AppCompatActivity {
 
         ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
-        progressDialog.setMessage("Waiting for opponent");
+        progressDialog.setMessage("Waiting for opponent.\n Room ID: " + connectionID);
         progressDialog.show();
 
         playerUniqueID = getIntent().getStringExtra("playerUniqueID");
@@ -458,5 +458,10 @@ public class GameActivity extends AppCompatActivity {
         }
 
         return isPlayerWon;
+    }
+
+    public void restart() {
+        boxesSelectedBy = new String[]{"", "", "", "", "", "", "", "", ""};
+        doneBoxes.clear();
     }
 }

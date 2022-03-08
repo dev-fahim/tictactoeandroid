@@ -16,9 +16,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class InitialActivity extends AppCompatActivity {
-
-    private final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://marveloustechnologiesapplab.firebaseio.com/");
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +34,8 @@ public class InitialActivity extends AppCompatActivity {
 
             if (playerName.isEmpty()) {
                 Toast.makeText(InitialActivity.this, "Player name is required!", Toast.LENGTH_SHORT).show();
+            } else if (roomId.isEmpty()) {
+                Toast.makeText(InitialActivity.this, "Room ID is required!", Toast.LENGTH_SHORT).show();
             } else {
                 Intent intent = new Intent(InitialActivity.this, GameActivity.class);
                 intent.putExtra("playerName", playerName);
@@ -63,7 +62,5 @@ public class InitialActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
 }

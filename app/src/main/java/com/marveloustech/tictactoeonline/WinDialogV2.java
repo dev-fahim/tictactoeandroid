@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -31,8 +30,7 @@ public class WinDialogV2 extends Dialog {
         messageTV.setText(message);
         startNewBtn.setOnClickListener(view -> {
             dismiss();
-            getContext().startActivity(new Intent(getContext(), InitialActivity.class));
-            game.finish();
+            game.restart();
         });
     }
 }
