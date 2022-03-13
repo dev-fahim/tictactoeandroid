@@ -5,15 +5,10 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import java.util.Objects;
 
 public class InitialActivity extends AppCompatActivity {
     @Override
@@ -21,10 +16,13 @@ public class InitialActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial);
 
+        Objects.requireNonNull(getSupportActionBar()).hide();
+
         EditText playerNameEt = findViewById(R.id.initialPlayerNameEt);
         EditText roomIdEt = findViewById(R.id.initialRoomIdEt);
         AppCompatButton joinRoomBtn = findViewById(R.id.initialJoinRoomBtn);
         AppCompatButton createNewRoomBtn = findViewById(R.id.initialCreateNewRoomBtn);
+        AppCompatButton offlinePlayBtn = findViewById(R.id.initialOfflinePlayBtn);
 
         final String playerUniqueID = String.valueOf(System.currentTimeMillis());
 
@@ -37,7 +35,7 @@ public class InitialActivity extends AppCompatActivity {
             } else if (roomId.isEmpty()) {
                 Toast.makeText(InitialActivity.this, "Room ID is required!", Toast.LENGTH_SHORT).show();
             } else {
-                Intent intent = new Intent(InitialActivity.this, GameActivity.class);
+                Intent intent = new Intent(InitialActivity.this, OnlineGameActivityActivity.class);
                 intent.putExtra("playerName", playerName);
                 intent.putExtra("roomId", roomId);
                 intent.putExtra("playerUniqueID", playerUniqueID);
@@ -54,13 +52,19 @@ public class InitialActivity extends AppCompatActivity {
             } else {
                 String roomId = String.valueOf(System.currentTimeMillis());
 
-                Intent intent = new Intent(InitialActivity.this, GameActivity.class);
+                Intent intent = new Intent(InitialActivity.this, OnlineGameActivityActivity.class);
                 intent.putExtra("playerName", playerName);
                 intent.putExtra("roomId", roomId);
                 intent.putExtra("playerUniqueID", playerUniqueID);
                 startActivity(intent);
                 finish();
             }
+        });
+
+        offlinePlayBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(InitialActivity.this, OfflineGameActivityActivity.class);
+            startActivity(intent);
+            finish();
         });
     }
 }
