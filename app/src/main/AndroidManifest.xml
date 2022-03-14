@@ -14,13 +14,15 @@
         <activity
             android:name=".OfflineGameActivity"
             android:exported="false" />
-
         <activity
             android:name=".OnlineGameActivity"
             android:exported="false" />
-
         <activity
             android:name=".InitialActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".Splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +30,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
