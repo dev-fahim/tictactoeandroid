@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class OfflineGameActivityActivity extends GameActivity {
+public class OfflineGameActivity extends GameActivity {
     protected String mode = "Offline";
 
     boolean isPlayerOne = true;
@@ -173,7 +173,7 @@ public class OfflineGameActivityActivity extends GameActivity {
         if (checkPlayerWin(selectedByPlayer)) {
             final WinDialog winDialog;
 
-            winDialog = new WinDialog(OfflineGameActivityActivity.this, selectedByPlayer + " WON the GAME!");
+            winDialog = new WinDialog(OfflineGameActivity.this, selectedByPlayer + " WON the GAME!");
 
             winDialog.setCancelable(false);
             winDialog.show();
@@ -184,7 +184,7 @@ public class OfflineGameActivityActivity extends GameActivity {
         togglePlayerTurn();
 
         if (doneBoxes.size() == 9) {
-            final WinDialog winDialog = new WinDialog(OfflineGameActivityActivity.this, "It was a DRAW!");
+            final WinDialog winDialog = new WinDialog(OfflineGameActivity.this, "It was a DRAW!");
             playNotWin();
             winDialog.setCancelable(false);
             winDialog.show();

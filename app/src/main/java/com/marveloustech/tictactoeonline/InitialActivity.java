@@ -40,7 +40,7 @@ public class InitialActivity extends AppCompatActivity {
             } else if (roomId.isEmpty()) {
                 Toast.makeText(InitialActivity.this, "Room ID is required!", Toast.LENGTH_SHORT).show();
             } else {
-                Intent intent = new Intent(InitialActivity.this, OnlineGameActivityActivity.class);
+                Intent intent = new Intent(InitialActivity.this, OnlineGameActivity.class);
                 intent.putExtra("playerName", playerName);
                 intent.putExtra("roomId", roomId);
                 intent.putExtra("playerUniqueID", playerUniqueID);
@@ -57,7 +57,7 @@ public class InitialActivity extends AppCompatActivity {
             } else {
                 String roomId = String.valueOf(System.currentTimeMillis());
 
-                Intent intent = new Intent(InitialActivity.this, OnlineGameActivityActivity.class);
+                Intent intent = new Intent(InitialActivity.this, OnlineGameActivity.class);
                 intent.putExtra("playerName", playerName);
                 intent.putExtra("roomId", roomId);
                 intent.putExtra("playerUniqueID", playerUniqueID);
@@ -67,7 +67,7 @@ public class InitialActivity extends AppCompatActivity {
         });
 
         offlinePlayBtn.setOnClickListener(view -> {
-            Intent intent = new Intent(InitialActivity.this, OfflineGameActivityActivity.class);
+            Intent intent = new Intent(InitialActivity.this, OfflineGameActivity.class);
             startActivity(intent);
             finish();
         });

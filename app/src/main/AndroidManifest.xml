@@ -12,11 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TicTacToeOnline">
         <activity
-            android:name=".OfflineGameActivityActivity"
+            android:name=".OfflineGameActivity"
             android:exported="false" />
 
         <activity
-            android:name=".OnlineGameActivityActivity"
+            android:name=".OnlineGameActivity"
             android:exported="false" />
 
         <activity

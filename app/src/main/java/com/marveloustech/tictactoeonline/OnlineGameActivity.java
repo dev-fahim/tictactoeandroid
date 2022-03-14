@@ -14,7 +14,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
 
-public class OnlineGameActivityActivity extends GameActivity {
+public class OnlineGameActivity extends GameActivity {
     private boolean opponentFound = false;
 
     private String status = "matching";
@@ -226,10 +226,10 @@ public class OnlineGameActivityActivity extends GameActivity {
 
                     assert getWinPlayerID != null;
                     if (getWinPlayerID.equals(playerUniqueID)) {
-                        winDialog = new WinDialog(OnlineGameActivityActivity.this, "You WON the GAME!");
+                        winDialog = new WinDialog(OnlineGameActivity.this, "You WON the GAME!");
                         playWin();
                     } else {
-                        winDialog = new WinDialog(OnlineGameActivityActivity.this, "Opponent WON the GAME!");
+                        winDialog = new WinDialog(OnlineGameActivity.this, "Opponent WON the GAME!");
                         playNotWin();
                     }
 
@@ -428,7 +428,7 @@ public class OnlineGameActivityActivity extends GameActivity {
         }
 
         if (doneBoxes.size() == 9) {
-            final WinDialog winDialog = new WinDialog(OnlineGameActivityActivity.this, "It is a DRAW!");
+            final WinDialog winDialog = new WinDialog(OnlineGameActivity.this, "It is a DRAW!");
             playNotWin();
             winDialog.setCancelable(false);
             winDialog.show();
