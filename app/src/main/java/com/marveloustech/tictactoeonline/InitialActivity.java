@@ -3,6 +3,7 @@ package com.marveloustech.tictactoeonline;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,10 @@ public class InitialActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial);
+
+        TextView tvVersion = findViewById(R.id.tvVersion);
+
+        tvVersion.setText("Version " + BuildConfig.VERSION_NAME);
 
         Objects.requireNonNull(getSupportActionBar()).hide();
 
